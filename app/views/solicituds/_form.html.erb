@@ -1,0 +1,397 @@
+<%= form_with(model: solicitud, local: true) do |form| %>
+<%= form.submit  class: "btn alert-primary form-control" %><br><br>
+<%= link_to 'Cancelar', @solicitud, class: "btn alert-danger form-control" %>
+
+
+  <% if solicitud.errors.any? %> 
+    <% solicitud.errors.full_messages.each do |message| %>
+       <%= js add_gritter(message, :title => "Solicitud", :sticky => false,  :class_name => "custom_error") %>
+    <% end %>
+  <% end %>
+           
+ <br><br>
+<!-- proyecto --> 
+<div class="row">
+  <div class="col-md-12">
+    Proyecto
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-7">
+      <%= form.collection_select(:proyecto,  Proyecto.order(:nombre_proyecto), :nombre_proyecto, :nombre_proyecto, { prompt: "Seleccione un proyecto"} , {class: 'form-control'}) %> 
+  </div>
+  <div class="col-md-1">
+    <a href="#" id="add-group-btn" class="btn btn-primary "><%= fa_icon 'plus' %></a>
+  </div>
+  <div class="col-md-4">
+    <div class="form-group" id="add-new-group">
+      <div class="col-md-offset-3 col-md-8">
+        <div class="input-group">
+          <input type="text" name="new_group" id="new_group" class="form-control">
+          <span class="input-group-btn">
+            <a href="#" class="btn btn-default">
+              <i><%= fa_icon 'check' %></i>
+            </a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Cliente -->
+<div class="row">
+  <div class="col-md-12">
+    Cliente
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-7">
+      <%= form.collection_select(:cliente_id,  Cliente.order(:nombre_comercial), :nombre_comercial, :nombre_comercial, { prompt: "Seleccione un cliente"}, {class: 'form-control'}) %> 
+  </div>
+  <div class="col-md-1">
+    <a href="#" id="add-group-btn" class="btn btn-primary "><%= fa_icon 'plus' %></a>
+  </div>
+  <div class="col-md-4">
+    <div class="form-group" id="add-new-group">
+      <div class="col-md-offset-3 col-md-8">
+        <div class="input-group">
+          <input type="text" name="new_group" id="new_group" class="form-control">
+          <span class="input-group-btn">
+            <a href="#" class="btn btn-default">
+              <i><%= fa_icon 'check' %></i>
+            </a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Contacto -->
+
+<div class="row">
+  <div class="col-md-12">
+    Contacto
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-7">
+      <%= form.collection_select(:client_contacto_id,  ClienteContacto.order(:nombre), :nombre, :nombre, {prompt: "seleccione un contacto"}, {class: 'form-control'}) %> 
+  </div>
+  <div class="col-md-1">
+    <a href="#" id="add-group-btn" class="btn btn-primary "><%= fa_icon 'plus' %></a>
+  </div>
+  <div class="col-md-4">
+    <div class="form-group" id="add-new-group">
+      <div class="col-md-offset-3 col-md-8">
+        <div class="input-group">
+          <input type="text" name="new_group" id="new_group" class="form-control">
+          <span class="input-group-btn">
+            <a href="#" class="btn btn-default">
+              <i><%= fa_icon 'check' %></i>
+            </a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- Demas campos -->
+<div class="row">
+  <div class="col-md-4">
+      Estatus:&nbsp;<%= form.select(:estatus, ['Emitida', 'Cotizada', 'Cancelada'], { include_blank: true }, { class: 'form-control' }) %>
+  </div>
+  <div class="col-md-8">
+    Observaciones:&nbsp;<%= form.text_area :comentarios, cols: 10, rows: 5, class: "form-control" %>
+  </div>
+</div><br>
+
+<hr>
+<div class="row">
+  <hr>
+  <h3>Servicio</h3>
+  <hr> 
+</div>
+<hr>
+
+<div class="row">
+  <div class="col-md-2">
+    Calificar Procedimiento 
+  </div>
+  <div class="col-md-1">
+    <%= form.check_box :servicio_calif_procedimiento %>
+  </div>
+  <div class="col-md-2">
+    Calificar Soldador
+  </div>
+  <div class="col-md-1">
+    <%= form.check_box :servicio_calif_soldador %>
+  </div>
+  <div class="col-md-2">
+    Doblez
+  </div>
+  <div class="col-md-1">
+    <%= form.check_box :servicio_doblez %>
+  </div>
+  <div class="col-md-2">
+    Elaborar Procedimiento
+  </div>
+  <div class="col-md-1">
+    <%= form.check_box :servicio_elab_procedimiento %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-2">
+    Emitir Procedimiento
+  </div>
+  <div class="col-md-1">
+    <%= form.check_box :servicio_emision_procedimiento %>
+  </div>
+  <div class="col-md-2">
+    Inspección Visual
+  </div>
+  <div class="col-md-1">
+    <%= form.check_box :servicio_inspeccion_visual %>
+  </div>
+  <div class="col-md-2">
+    Iris
+  </div>
+  <div class="col-md-1">
+    <%= form.check_box :servicio_iris %>
+  </div>
+  <div class="col-md-2">
+    Líquido Penetrante
+  </div>
+  <div class="col-md-1">
+    <%= form.check_box :servicio_liquido_penetrante %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-2">
+    Partículas Magnéticas
+  </div>
+  <div class="col-md-1">
+    <%= form.check_box :servicio_part_magneticas %>
+  </div>
+  <div class="col-md-2">
+    Prueba Doblez
+  </div>
+  <div class="col-md-1">
+    <%= form.check_box :servicio_prueba_doblez %>
+  </div>
+  <div class="col-md-2">
+    Prueba Pintura
+  </div>
+  <div class="col-md-1">
+    <%= form.check_box :servicio_prueba_pintura %>
+  </div>
+  <div class="col-md-2">
+    Radiografia
+  </div>
+  <div class="col-md-1">
+    <%= form.check_box :servicio_radiografia %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-2">
+    Supervición
+  </div>
+  <div class="col-md-1">
+    <%= form.check_box :servicio_supervicion %>
+  </div>
+  <div class="col-md-2">
+    Torque
+  </div>
+  <div class="col-md-1">
+    <%= form.check_box :servicio_torque %>
+  </div>
+  <div class="col-md-2">
+    Ultrasonido
+  </div>
+  <div class="col-md-1">
+    <%= form.check_box :servicio_ultrasonido %>
+  </div>
+  <div class="col-md-2">
+    Vacio
+  </div>
+  <div class="col-md-1">
+  <%= form.check_box :servicio_vacio %>
+  </div>
+</div>
+
+<hr>
+<div class="row">
+  <hr>
+  <h3>Tubería</h3>
+  <hr> 
+</div>
+<hr>
+
+<div class="row">
+  <div class="col-md-2">
+    ¿Altura tuberia?
+  </div>
+  <div class="col-md-1">
+    <%= form.check_box :tuberia_altura  %>
+  </div>
+  <div class="col-md-4">
+    <%= form.number_field :tuberia_altura_valor , class: 'form-control', placeholder: 'Altura Tuberia' %>
+  </div>
+  <div class="col-md-5">
+    <%= form.text_field :tuberia_codigo_evaluacion, class: 'form-control', placeholder: 'Código Evaluación' %>
+  </div>
+</div><br>
+<table class="table">
+  <tbody>
+    <tr>
+      <td>Medida</td>
+      <td>Uniones</td>
+      <td>Cédula</td>
+    </tr>
+    <tr>
+      <td>hasta 2<small>1/2</small></td>
+      <td><%= form.number_field :tuberia_uniones_hasta_2_y_medio %></td>
+      <td><%= form.number_field :tuberia_cedula_hasta_2_y_medio %></td>
+    </tr>
+    <tr>
+      <td>de 3 a 8</td>
+      <td><%= form.number_field :tuberia_uniones_3_a_8 %></td>
+      <td><%= form.number_field :tuberia_cedula_3_a_8 %></td>
+    </tr>
+    <tr>
+      <td>de 10 a 14</td>
+      <td><%= form.number_field :tuberia_uniones_10_a_14 %></td>
+      <td><%= form.number_field :tuberia_cedula_10_a_14 %></td>
+    </tr>
+    <tr>
+      <td>de 16 a 20</td>
+      <td><%= form.number_field :tuberia_uniones_16_a_20 %></td>
+      <td><%= form.number_field :tuberia_cedula_16_a_20 %></td>
+    </tr>
+    <tr>
+      <td>de 24 a 26</td>
+      <td><%= form.number_field :tuberia_uniones_24_a_26 %></td>
+      <td><%= form.number_field :tuberia_cedula_24_a_26 %></td>
+    </tr>
+    <tr>
+      <td>de 30 a 32</td>
+      <td><%= form.number_field :tuberia_uniones_30_a_32 %></td>
+      <td><%= form.number_field :tuberia_cedula_30_a_32 %></td>
+    </tr>
+    <tr>
+      <td>de 34 a 36</td>
+      <td><%= form.number_field :tuberia_uniones_34_a_36 %></td>
+      <td><%= form.number_field :tuberia_cedula_34_a_36 %></td>
+    </tr>
+    <tr>
+      <td>de 38 a 42</td>
+      <td><%= form.number_field :tuberia_uniones_38_a_42 %></td>
+      <td><%= form.number_field :tuberia_cedula_38_a_42 %></td>
+    </tr>
+    <tr>
+      <td>de 44 a 48</td>
+      <td><%= form.number_field :tuberia_uniones_44_a_48 %></td>
+      <td><%= form.number_field :tuberia_cedula_44_a_48 %></td>
+    </tr>
+     
+  </tbody>
+</table>
+
+<hr>
+<div class="row">
+  <hr>
+  <h3>Estructura</h3>
+  <hr> 
+</div>
+<br>
+
+<table class="table">
+  <col>
+  <col>
+  <colgroup span="4"></colgroup>
+  <tbody>
+    <tr>
+      <th rowspan="2" scope="rowgroup">Elementos</th>
+      <th scope="row">Columnas</th>
+      <td>PR:&nbsp;<%= form.check_box :estructura_columna_pr  %></td>
+      <td>HSS o cajón:&nbsp;<%= form.check_box :estructura_columna_hss_o_cajon %></td>
+      <td>PTR o Monten:&nbsp;<%= form.check_box :estructura_columna_ptr_o_monten %></td>
+    </tr>
+    <tr>
+      <th scope="row">Trabes</th>
+      <td>PR:&nbsp;<%= form.check_box :estructura_trabes_pr, label: 'PR' %></td>
+      <td>PS:&nbsp;<%= form.check_box :estructura_trabes_ps, label: 'PS' %></td>
+      <td>Ángulo/PTR:&nbsp;<%= form.check_box :estructura_trabes_angulo_con_ptr %></td>
+      
+    </tr>
+    <tr>
+      <th scope="row group">Tipo de Uniones</th>
+      <td>Ángulo con Ángulo:&nbsp;<%= form.check_box :estructura_angulo_con_angulo %></td>
+      <td>PTR con PTR:&nbsp;<%= form.check_box :estructura_ptr_con_ptr %></td>
+      <td>Unión Filete:&nbsp;<%= form.check_box :estructura_union_filete %></td>
+      <td>Unión a Tope:&nbsp;<%= form.check_box :estructura_union_a_tope %></td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr>
+      <th rowspan="2" scope="rowgroup">Espesores</th>
+        <td>Columna:&nbsp;<%= form.number_field :estructura_espesor_columna , class: 'form-control' %></td>
+        <td>Trabe&nbsp;<%= form.number_field :estructura_espesor_trabe, class: 'form-control' %></td>
+        <td>Tiempo Fabricación del Montaje:&nbsp;<%= form.number_field :estructura_tiempo_fabricacion_montaje, class: 'form-control'  %></td>
+        <td>Toneladas:&nbsp;<%= form.number_field :estructura_toneladas, class: 'form-control'  %></td>
+    </tr>
+     
+  </tbody>
+</table>
+
+
+<hr>
+<div class="row">
+  <hr>
+  <h3>Tanque</h3>
+  <hr> 
+</div>
+<hr>
+<div class="row">
+  <div class="col-md-3">
+    ¿Recipiente a Presión?&nbsp;<%= form.check_box :tanque_recipiente_a_presion  %>
+  </div>
+  <div class="col-md-3">
+    Cuerpo:&nbsp;<%= form.number_field :tanque_espesor_cuerpo, class: 'form-control' %>
+  </div>
+  <div class="col-md-3">
+    Tapa:&nbsp;<%= form.number_field :tanque_espesor_tapa, class: 'form-control' %>
+  </div>
+  <div class="col-md-3">
+    Diámetro:&nbsp;<%= form.number_field :tanque_espesor_diametro, class: 'form-control' %>
+  </div>
+</div><br>
+<div class="row">
+  <div class="col-md-2">
+    Capacidad:&nbsp;<%= form.number_field :tanque_espesor_capacidad, class: 'form-control' %>
+  </div>
+  <div class="col-md-2">
+    Longitud Altura:&nbsp;<%= form.number_field :tanque_espesor_longitud_altura, class: 'form-control' %>
+  </div>
+  <div class="col-md-3">
+    No. Soldaduras de la Circunferencia:&nbsp;<%= form.number_field :tanque_no_sold_circunferencia, class: 'form-control' %>
+  </div>
+  <div class="col-md-3">
+    No. Soldaduras de la Longitud:&nbsp;<%= form.number_field :tanque_no_sold_longitud, class: 'form-control' %>
+  </div>
+  <div class="col-md-2">
+    Código de Evaluación:&nbsp;<%= form.number_field :tanque_codigo_evaluacion, class: 'form-control' %>
+  </div>
+</div>
+  
+  
+<% end %>
+  

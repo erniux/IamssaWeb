@@ -1,0 +1,21 @@
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+<%= js add_gritter(flash[:notice], title: "Bienvenido", sticky: false, time: 1000, class_name: "custom_gritter") %>
+ 
+<div class="container-fluid text-center">
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+      <p><a href="#"></a></p>
+      <p><a href="#"></a></p>
+      <p><a href="#"></a></p>
+    </div>
+
+    <div class="col-sm-8 text-left">
+         
+        <%= render 'compartidos/inicio_lista_solicitudes' %>
+      <hr>
+    </div>
+    
+    
+  </div>
+</div>

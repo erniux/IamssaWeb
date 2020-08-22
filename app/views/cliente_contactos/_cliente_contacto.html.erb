@@ -1,0 +1,26 @@
+ <br> 
+ <div class="row"> 
+	<div class="col-md-4">
+		<%= cliente_contacto.nombre.to_s + ' ' + cliente_contacto.appaterno.to_s + ' ' + cliente_contacto.apmaterno.to_s %>
+	</div>
+	<div class="col-md-6">
+		teléfono:&nbsp;<%= cliente_contacto.telefono_directo.to_s %><br>
+		correo:&nbsp;<%= cliente_contacto.correo.to_s %><br>
+		puesto:&nbsp;<%= cliente_contacto.puesto.to_s %><br>
+		departamento:&nbsp;<%= cliente_contacto.departamento.to_s %><br>
+
+
+	</div>
+	<div class="col-md-1">
+		<%= link_to edit_cliente_cliente_contacto_path(@cliente, cliente_contacto), class: "btn alert-info", local: true  do %>
+			 <%= fa_icon 'file' %>
+		<% end %>
+	</div>
+	<div class="col-md-1">
+		<%= link_to cliente_cliente_contacto_path(@cliente, cliente_contacto), method: :delete, data:{ confirm: '¿Confirma eliminar el registro?'}, class: "btn alert-danger"  do %>
+			<i><%= fa_icon 'trash'  %></i>
+		<% end %>
+	</div>
+</div>
+
+  

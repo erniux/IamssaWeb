@@ -1,0 +1,166 @@
+<div class="row">
+  <div class="col-md-12">
+     <h3><%= @cliente.nombre_fiscal %></h3>
+     <%= link_to 'Editar', edit_cliente_path(@cliente), class: "btn alert-success" %>
+    <%= link_to 'Regresar', clientes_path, class: "btn alert-danger" %>
+   </div>
+ </div>
+ <br>
+ <div class="row">
+  <div class="col-md-6">
+    <strong>Nombre Fiscal:</strong>&nbsp;<%= @cliente.nombre_fiscal %>
+  </div>
+  <div class="col-md-6">
+    <strong>RFC:</strong>&nbsp;<%= @cliente.rfc %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <strong>Domicilio:</strong>&nbsp;<%= @cliente.calle_numero %>
+  </div>
+  <div class="col-md-6">
+    <strong>&nbsp;Col.:&nbsp;</strong><%= @cliente.colonia %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6"> 
+    <strong>&nbsp;Pob.:&nbsp;</strong><%=@cliente.poblacion %>&nbsp;
+  </div>
+  <div class="col-md-6">
+    <strong>Edo.:</strong>&nbsp;<%= @cliente.estado %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-3">
+    <strong>&nbsp;C.P.:</strong>&nbsp;<%= @cliente.codigo_postal %>
+  </div>
+</div>
+
+ <br>
+<div class="row">
+  <div class="col-md-12"> 
+    <button class="btn alert-primary" type="button" data-toggle="collapse" data-target="#masDatos" aria-expanded="false" aria-controls="masDatos">
+        Más Datos
+      </button>
+   
+    <div class="collapse" id="masDatos">
+        <div class="card card-body">
+            <div class="row">
+              <div class="col-md-4">
+                <strong>Teléfonos Oficina:</strong>&nbsp;<%= @cliente.telefono_oficina.to_s + ' ' +  @cliente.telefono_celular.to_s + ' ' + @cliente.telefono_directro.to_s %>
+              </div>
+              <div class="col-md-4">
+                <strong>Correo:</strong>&nbsp;<%= @cliente.correo %>
+              </div>
+              <div class="col-md-4">
+                <strong>Medio de Contacto:&nbsp;</strong><%= @cliente.medio_contacto %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3">
+                <strong>Presupuesto:&nbsp;</strong><%= @cliente.presupuesto %>
+              </div>
+              <div class="col-md-2">
+                <strong>Crédito:&nbsp;</strong><%= @cliente.credito %>
+              </div>
+              <div class="col-md-2">
+                <strong>Tipo Cliente:&nbsp;</strong><%= @cliente.tipo %>
+              </div>
+              <div class="col-md-2">
+                <strong>Descuento:&nbsp;</strong><%= @cliente.descuento %>
+              </div>
+              <div class="col-md-3">
+                <strong>Precio:&nbsp;</strong><%= @cliente.precio %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3">
+                <strong>Banco:&nbsp;</strong><%= @cliente.banco %>
+              </div>
+              <div class="col-md-3">
+                <strong>Sucursal:&nbsp;</strong><%= @cliente.sucursal %>
+              </div>
+              <div class="col-md-3">
+                <strong>cuenta:&nbsp;</strong><%= @cliente.cuenta %>
+              </div>
+              <div class="col-md-3">
+                <strong>CLABE:&nbsp;</strong><%= @cliente.clabe %>
+              </div>
+            </div>
+
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th>Día</th>
+                    <th>Revisión</th>
+                    <th>Cobro</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>lunes</td>
+                    <td><%= check_box_tag('lunes:', @cliente.revision_lunes, !@cliente.revision_lunes.zero?, disabled: true) %></td>
+                     <td><%= check_box_tag('lunes:', @cliente.cobro_lunes, !@cliente.cobro_lunes.zero?, disabled: true) %></td>
+                  </tr>
+                  <tr>
+                    <td>martes</td>
+                    <td><%= check_box_tag('martes:', @cliente.revision_martes, !@cliente.revision_martes.zero?, disabled: true) %></td>
+                    <td><%= check_box_tag('martes:', @cliente.cobro_martes, !@cliente.cobro_martes.zero?, disabled: true) %></td>
+                  </tr> 
+                  <tr>
+                    <td>miércoles</td>
+                    <td><%= check_box_tag('miercoles:', @cliente.revision_miercoles, !@cliente.revision_miercoles.zero?, disabled: true) %></td>
+                    <td><%= check_box_tag('miercoles:', @cliente.cobro_miercoles, !@cliente.cobro_miercoles.zero?, disabled: true) %></td>
+                  </tr>
+                  <tr>
+                    <td>jueves</td>
+                    <td><%= check_box_tag('jueves:', @cliente.revision_jueves, !@cliente.revision_jueves?, disabled: true) %></td>
+                    <td><%= check_box_tag('jueves:', @cliente.cobro_jueves, !@cliente.cobro_jueves?, disabled: true) %></td>
+                  </tr>
+                  <tr>
+                    <td>viernes</td>
+                    <td><%= check_box_tag('viernes:', @cliente.revision_viernes, !@cliente.revision_viernes.zero?, disabled: true) %></td>
+                    <td><%= check_box_tag('viernes:', @cliente.cobro_viernes, !@cliente.cobro_viernes.zero?, disabled: true) %></td>
+                  </tr>
+                  <tr>
+                    <td>sábado</td>
+                    <td><%= check_box_tag('sabado:', @cliente.revision_sabado, !@cliente.revision_sabado.zero?, disabled: true) %></td>
+                    <td><%= check_box_tag('sabado:', @cliente.cobro_sabado, !@cliente.cobro_sabado.zero?, disabled: true) %></td>
+                  </tr>
+                </tbody>  
+              </table>
+            </div>   
+          </div>   
+        </div>
+      </div> <br><hr>
+
+   <h4><em>Contactos:</em></h4>
+   <table class="table">
+      <thead>
+         <tr>
+           <th>Nombre </th>
+           <th>Correo</th>
+           <th>Puesto</th>
+           <th>Departamento</th>
+           <th>Teléfono</th>
+         </tr>
+      </thead>
+      <tbody>
+         <% @cliente.cliente_contactos.each do |contacto| %>
+         <tr>
+            <td><%= contacto.nombre %> <%= contacto.appaterno %> <%= contacto.apmaterno %></td>
+            <td><%= contacto.correo %></td>
+            <td><%= contacto.puesto %></td>
+            <td><%= contacto.departamento %></td>
+            <td><%= contacto.telefono_directo %></td>
+      <% end %>
+    </tr>
+  </tbody>
+</table>
+</br>
+</br>
+<br>
+<br>
+<br>
+
+

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Iamssaweb</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag '//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/le-frog/jquery-ui.min.css' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  </head>
+
+<%= js add_gritter(flash[:notice], :title => "Sample gritter app", :sticky => true, :time => 1000) %>
+  <%= render 'compartidos/navegacion' %>  
+  <body>
+    <div class="container">
+    <%= yield %>
+  </div>
+  </body>
+</html>
+
+ 

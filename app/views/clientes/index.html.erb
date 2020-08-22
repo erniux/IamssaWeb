@@ -1,0 +1,57 @@
+<h3>Catálogo de Clientes</h3>
+<%= form_tag clientes_path, method: :get do %>
+    <div class="input-group">
+        <%= text_field_tag 'term', params[:term], placeholder: "Ingrese criterio de búsqueda", class: "form-control" %>
+        <span class="input-group-btn">
+            <button class="btn btn-default" type="submit">
+                <i><%= fa_icon 'search'  %></i>
+            </button>
+        </span>
+    </div>
+
+    <% end %><br>
+
+    <div class="row">
+      <div class="col-md-4">
+        <%= link_to 'Crear Cliente', new_cliente_path, class: "btn btn-info" %>
+      </div>
+      <div class="col-md-8">
+        <%= paginate @clientes, window: 1 %></p>
+      </div>
+    </div>
+
+ <br>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Nombre Comercial</th>
+      <th>RFC</th>
+      <th>Tel Oficina</th>
+      <th>Correo</th>
+      <th colspan="3">Acciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @clientes.each do |cliente| %>
+    <tr>
+        <td><%= cliente.nombre_comercial %></td>
+        <td><%= cliente.rfc %></td>
+        <td><%= cliente.telefono_oficina %></td>
+        <td><%= cliente.correo %></td>
+        <td><%= link_to edit_cliente_path(cliente), class: "btn alert-info", local: true  do %>
+          <%= fa_icon 'pencil' %>
+        <% end %></td>
+        <td><%= link_to  cliente, class: "btn alert-primary", local: true  do %>
+          <%= fa_icon 'file' %>
+        <% end %></td>
+        <td><%= link_to cliente, method: :delete, data:{ confirm: '¿Confirma eliminar el registro?'}, class: "btn alert-danger"  do %>
+          <%= fa_icon 'trash'  %>
+          <% end %></td>
+      
+    <% end %>
+   </tr>
+  </tbody>
+</table>
+ 

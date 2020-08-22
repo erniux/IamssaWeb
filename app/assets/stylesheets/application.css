@@ -1,0 +1,107 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require bootstrap
+ *= require font-awesome
+ *= require_tree .
+ *= require_self
+ */
+
+body { 
+ 	background: #FDFAFA !important; 
+ 	color: #68131D;
+ 	font-size: 14px;
+ }
+
+ .table {
+ 	color: #68131D;
+ }
+
+ .container {
+ 	padding: 20px 10px;
+ }
+
+ .navbar {
+	color: white; 
+	background-color: #68131D; 
+
+	box-shadow: rgba(0, 0, 0, 0.09) 0 2px 0;
+	
+}
+
+.navbar-nav .nav-link {
+	color: white;
+}
+
+.a {
+	color: #68131D;
+}
+
+.navbar .navbar-brand {
+	font-weight: bold;
+	font-size: 18px;
+}
+
+.navbar-right {
+	margin-right: 50px;
+}
+
+.table tbody>tr>td.middle {
+	vertical-align: middle;
+}
+
+.media {
+	padding: 10px 0;
+}
+
+.media img, .fileinput .thumbnail, .thumbnail img {
+	border-radius: 50%;
+}
+
+.media-left {
+	padding: 0 20px;
+}
+
+.media-heading {
+	color: #dd5638;
+	margin-bottom: 10px;
+}
+
+.media-body {
+	padding-top: 15px;
+}
+
+@media screen and (max-width: 600px) {
+       table {
+           width:100%;
+       }
+       thead {
+           display: none;
+       }
+        
+       tbody td {
+           display: block;
+           text-align:center;
+           width:100%;
+       }
+        
+}
+
+.ui-autocomplete {
+	position: relative;
+	cursor: default;
+	z-index. 999 !important;
+	background-color: #68131D;
+	color: white;
+	width: 196px;
+
+}

@@ -1,0 +1,44 @@
+<%= form_with(model: [@cliente, cliente_contacto ], local: true) do |form| %>
+	<div class="row">
+		<div class="col-md-4">
+			<%= form.label :nombre %>&nbsp;
+			<%= form.text_field :nombre, class: "form-control", required: true %>
+		</div>
+		<div class="col-md-4">
+			<%= form.label :appaterno %>&nbsp;
+			<%= form.text_field :appaterno, class: "form-control", required: true %>
+		</div>
+		<div class="col-md-4">
+			<%= form.label :apmaterno %>&nbsp;
+			<%= form.text_field :apmaterno, class: "form-control", required: true %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4">
+			<%= form.label :telefono_directo %>&nbsp;
+			<%= form.text_field :telefono_directo, class: "form-control", required: true %>
+		</div>
+		<div class="col-md-4">
+			<%= form.label :correo %>&nbsp;
+			<%= form.text_field :correo, class: "form-control", required: true %>
+		</div>
+		<div class="col-md-4">
+			<%= form.label :puesto %>&nbsp;
+			<%= form.text_field :puesto, class: "form-control", required: true %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4">
+			<%= form.label :departamento %>&nbsp;
+			<%= form.text_field :departamento, class: "form-control", required: true %>
+		</div>
+	</div> 
+
+	<br>
+	<div class="row">
+		<%= form.submit "Guardar Contacto",  class: "btn alert-primary form-control" %><br><br>
+		<%= link_to 'Cancelar', edit_cliente_path(@cliente), class: "btn alert-danger form-control" %>
+	</div>
+<% end %> 
+ 
+
