@@ -46,17 +46,27 @@
       <tr>
         <td><%= solicitud.id %></td>
         <td><%= solicitud.cliente.nombre_comercial %></td>
-        <td><%= solicitud.proyecto %></td>
+        <td><%= solicitud.proyecto.nombre_proyecto %></td>
         <td><%= solicitud.estatus %></td>
         <td><%= solicitud.user.name %></td>
         <td><%= solicitud.nombre_contacto  %></td>
-        <td><%= link_to 'Mostrar', solicitud %></td>
-        <td><%= link_to 'Modificar', edit_solicitud_path(solicitud) %></td>
+        <td><%= link_to edit_solicitud_path(solicitud), class: "btn alert-info", local: true  do %>
+          <%= fa_icon 'pencil' %>
+        <% end %></td>
+        <td><%= link_to  solicitud, class: "btn alert-primary", local: true  do %>
+          <%= fa_icon 'file' %>
+        <% end %></td>
+        <td><%= link_to solicitud, method: :delete, data:{ confirm: '¿Confirma eliminar el registro?'}, class: "btn alert-danger"  do %>
+          <%= fa_icon 'trash'  %>
+        <%end %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
+
+
+
 
 

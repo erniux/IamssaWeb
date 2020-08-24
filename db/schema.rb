@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_20_022219) do
+ActiveRecord::Schema.define(version: 2020_08_22_221914) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -412,8 +412,10 @@ ActiveRecord::Schema.define(version: 2020_08_20_022219) do
     t.string "correo"
     t.string "puesto"
     t.string "departamento"
+    t.bigint "proyecto_id"
     t.index ["cliente_contacto_id"], name: "index_solicituds_on_cliente_contacto_id"
     t.index ["cliente_id"], name: "index_solicituds_on_cliente_id"
+    t.index ["proyecto_id"], name: "index_solicituds_on_proyecto_id"
     t.index ["user_id"], name: "index_solicituds_on_user_id"
   end
 
@@ -452,5 +454,6 @@ ActiveRecord::Schema.define(version: 2020_08_20_022219) do
   add_foreign_key "solicitud_tuberia", "solicituds"
   add_foreign_key "solicituds", "cliente_contactos"
   add_foreign_key "solicituds", "clientes"
+  add_foreign_key "solicituds", "proyectos"
   add_foreign_key "solicituds", "users"
 end

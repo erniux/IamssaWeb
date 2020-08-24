@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :empleados
   resources :solicituds
   
+  
 
   resources :clientes do
     resources :cliente_contactos

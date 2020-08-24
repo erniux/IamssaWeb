@@ -29,3 +29,98 @@ require("jquery-ui")
 
  		});
  });
+
+ $(function() {
+	$('#add-new-proyecto').hide();
+	$('#add-proyecto-btn').click(function() {
+		$('#add-new-proyecto').slideToggle(function() {
+			$('#new_proyecto').focus();
+		});
+		return false;
+	});
+
+	$('#save-proyecto-btn').click(function(event) {
+		event.preventDefault();
+
+		var newProyecto = $('#new_proyecto');
+		var inputProyecto = newProyecto.closest('.input-proyecto');
+
+		$.ajax({
+			url: "/proyectos", 
+			method: "post",
+			data: {
+				 proyecto: { nombre_proyecto: $('#new_proyecto').val() } 
+			},
+			success: function (proyecto) {
+				if(proyecto.nombre_proyecto != null) {
+					inputProyecto.removeClass('has-error');
+					inputProyecto.next('.text-danger').remove();
+
+					var newOption = $('<option />')
+								.attr('value', proyecto.id)
+								.attr('selected', true)
+								.text(proyecto.nombre_proyecto);
+
+					$('#solicitud_proyecto_id').append(newOption);
+
+					newProyecto.val("");
+				}
+			},
+			error: function (xhr) {
+				console.log("hay errores");
+				var errors = xhr.responseJSON;
+				var error = errors.join(" , ");
+				if (error) {
+					
+
+					inputProyecto.next('.text-danger').detach();
+					 
+					 inputProyecto
+						.addClass('has-error')
+						.after('<p class="text-danger">' + error + '</p>');
+				}
+			}
+
+		});
+	});
+});
+
+$(function() {
+	$('#add-new-cliente').hide();
+	$('#add-cliente-btn').click(function() {
+		$('#add-new-cliente').slideToggle(function() {
+			$('#new_cliente').focus();
+		});
+		return false;
+	});
+});
+
+$(function() {
+	$('#add-new-contacto').hide();
+	$('#add-contacto-btn').click(function() {
+		$('#add-new-contacto').slideToggle(function() {
+			$('#new_contacto').focus();
+		});
+		return false;
+	});
+});
+
+
+$(function() {
+    var contactos;
+    $('#contacto').hide();
+    
+
+    contactos = $('#solicitud_cliente_contacto_id').html();
+    return $('#solicitud_cliente_id').change(function() {
+      var cliente, options;
+      cliente = $('#solicitud_cliente_id :selected').text();
+      options = $(contactos).filter("optgroup[label='" + cliente + "']").html();
+      if (options) {
+        $('#solicitud_cliente_contacto_id').html(options);
+        return $('#contacto').show();
+         
+      }
+    });
+  });
+

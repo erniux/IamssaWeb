@@ -1,8 +1,6 @@
  <%= form_with(model: cliente, local: true) do |form| %>
   <% if cliente.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(cliente.errors.count, "error") %> prohibited this cliente from being saved:</h2>
-
       <ul>
         <% cliente.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -15,37 +13,37 @@
   <%= link_to 'Cancelar', @cliente, class: "btn alert-danger form-control" %>
   <div class="row">
     <div class="col-md-4">
-      <strong>Nombre Fiscal:&nbsp;</strong><%= form.text_field :nombre_fiscal, class: "form-control" %>
+      <strong>Nombre Fiscal:&nbsp;</strong><%= form.text_field :nombre_fiscal, class: "form-control", required: true %>
     </div>
     <div class="col-md-4">
-      <strong>Nombre Comercial:&nbsp;</strong><%= form.text_field :nombre_comercial, class: "form-control" %>
+      <strong>Nombre Comercial:&nbsp;</strong><%= form.text_field :nombre_comercial, class: "form-control", required: true %>
     </div>
     <div class="col-md-4">
-      <strong>RFC:&nbsp;</strong><%= form.text_field :rfc, class: "form-control" %>
+      <strong>RFC:&nbsp;</strong><%= form.text_field :rfc, class: "form-control", required: true %>
     </div>
   </div>
   <div class="row">
     <div class="col-md-6">
-      <strong>Calle y número:&nbsp;</strong><%= form.text_field :calle_numero, class: "form-control"%>
+      <strong>Calle y número:&nbsp;</strong><%= form.text_field :calle_numero, class: "form-control", required: true %>
     </div>
     <div class="col-md-6">
-      <strong>Colonia:&nbsp;</strong><%= form.text_field :colonia, class: "form-control"%>
+      <strong>Colonia:&nbsp;</strong><%= form.text_field :colonia, class: "form-control", required: true %>
     </div>
   </div>
   <div class="row">
     <div class="col-md-5">
-      <strong>Población:&nbsp;</strong><%= form.text_field :poblacion, class: "form-control"%>
+      <strong>Población:&nbsp;</strong><%= form.text_field :poblacion, class: "form-control", required: true %>
     </div>
     <div class="col-md-5">
-      <strong>Estado:&nbsp;</strong><%= form.text_field :estado, class: "form-control"%>
+      <strong>Estado:&nbsp;</strong><%= form.text_field :estado, class: "form-control", required: true %>
     </div>
     <div class="col-md-2">
-      <strong>Código Postal:&nbsp;</strong><%= form.text_field :codigo_postal, class: "form-control"%>
+      <strong>Código Postal:&nbsp;</strong><%= form.text_field :codigo_postal, class: "form-control", required: true %>
     </div>
   </div><br>
   <div class="row">
     <div class="col-md-4">
-      <strong>Teléfono Oficina&nbsp;</strong><%= form.text_field :telefono_oficina, class: "form-control"%>
+      <strong>Teléfono Oficina&nbsp;</strong><%= form.text_field :telefono_oficina, class: "form-control", required: true %>
     </div>
     <div class="col-md-4">
       <strong>Teléfono móvil:&nbsp;</strong><%= form.text_field :telefono_celular, class: "form-control"%>
@@ -56,10 +54,10 @@
   </div>
   <div class="row">
     <div class="col-md-8">
-      <strong>Correo:&nbsp;</strong><%= form.text_field :correo, class: "form-control"%>
+      <strong>Correo:&nbsp;</strong><%= form.text_field :correo, class: "form-control", required: true %>
     </div>
     <div class="col-md-4">
-      <strong>Medio de contacto:&nbsp;</strong><%= form.text_field :medio_contacto, class: "form-control"%>
+      <strong>Medio de contacto:&nbsp;</strong><%= form.text_field :medio_contacto, class: "form-control", required: true %>
     </div>
   </div>
   <div class="row">

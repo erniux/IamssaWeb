@@ -1,11 +1,10 @@
 <%= form_with(model: solicitud, local: true) do |form| %>
 <%= form.submit  class: "btn alert-primary form-control" %><br><br>
-<%= link_to 'Cancelar', @solicitud, class: "btn alert-danger form-control" %>
-
+<%= link_to 'Cancelar', solicituds_path, class: "btn alert-danger form-control" %>
 
   <% if solicitud.errors.any? %> 
     <% solicitud.errors.full_messages.each do |message| %>
-       <%= js add_gritter(message, :title => "Solicitud", :sticky => false,  :class_name => "custom_error") %>
+       <%= j add_gritter(message, :title => "Solicitud", :sticky => false,  :class_name => "custom_error") %>
     <% end %>
   <% end %>
            
@@ -18,18 +17,19 @@
 </div>
 <div class="row">
   <div class="col-md-7">
-      <%= form.collection_select(:proyecto,  Proyecto.order(:nombre_proyecto), :nombre_proyecto, :nombre_proyecto, { prompt: "Seleccione un proyecto"} , {class: 'form-control'}) %> 
+      <%= form.collection_select(:proyecto_id,  Proyecto.order(:nombre_proyecto), :id, :nombre_proyecto, { prompt: "Seleccione un proyecto"} , {class: 'form-control'}) %> 
   </div>
+      
   <div class="col-md-1">
-    <a href="#" id="add-group-btn" class="btn btn-primary "><%= fa_icon 'plus' %></a>
+    <a href="#" id="add-proyecto-btn" class="btn btn-primary "><%= fa_icon 'plus' %></a>
   </div>
   <div class="col-md-4">
-    <div class="form-group" id="add-new-group">
+    <div class="form-proyecto" id="add-new-proyecto">
       <div class="col-md-offset-3 col-md-8">
-        <div class="input-group">
-          <input type="text" name="new_group" id="new_group" class="form-control">
+        <div class="input-proyecto">
+          <input type="text" name="new_proyecto" id="new_proyecto" class="form-control">
           <span class="input-group-btn">
-            <a href="#" class="btn btn-default">
+            <a id="save-proyecto-btn" class="btn btn-default">
               <i><%= fa_icon 'check' %></i>
             </a>
           </span>
@@ -47,17 +47,17 @@
 </div>
 <div class="row">
   <div class="col-md-7">
-      <%= form.collection_select(:cliente_id,  Cliente.order(:nombre_comercial), :nombre_comercial, :nombre_comercial, { prompt: "Seleccione un cliente"}, {class: 'form-control'}) %> 
+      <%= form.collection_select(:cliente_id,  Cliente.order(:nombre_comercial), :id, :nombre_comercial, { prompt: "Seleccione un cliente"}, {class: 'form-control'}) %> 
   </div>
   <div class="col-md-1">
-    <a href="#" id="add-group-btn" class="btn btn-primary "><%= fa_icon 'plus' %></a>
+    <a href="#" id="add-cliente-btn" class="btn btn-primary "><%= fa_icon 'plus' %></a>
   </div>
   <div class="col-md-4">
-    <div class="form-group" id="add-new-group">
+    <div class="form-cliente" id="add-new-cliente">
       <div class="col-md-offset-3 col-md-8">
-        <div class="input-group">
-          <input type="text" name="new_group" id="new_group" class="form-control">
-          <span class="input-group-btn">
+        <div class="input-cliente">
+          <input type="text" name="new_cliente" id="new_cliente" class="form-control">
+          <span class="input-cliente-btn">
             <a href="#" class="btn btn-default">
               <i><%= fa_icon 'check' %></i>
             </a>
@@ -69,25 +69,25 @@
 </div>
 
 <!-- Contacto -->
-
-<div class="row">
+<div class="container" id="contacto">
+<div class="row" >
   <div class="col-md-12">
-    Contacto
+    <%= form.label :'Contacto' %>
   </div>
 </div>
 <div class="row">
   <div class="col-md-7">
-      <%= form.collection_select(:client_contacto_id,  ClienteContacto.order(:nombre), :nombre, :nombre, {prompt: "seleccione un contacto"}, {class: 'form-control'}) %> 
+      <%= form.grouped_collection_select(:cliente_contacto_id,  Cliente.order(:nombre_fiscal), :cliente_contactos, :nombre_fiscal,   :id, :nombre, {prompt: "seleccione un contacto"}, {class: 'form-control'}) %> 
   </div>
   <div class="col-md-1">
-    <a href="#" id="add-group-btn" class="btn btn-primary "><%= fa_icon 'plus' %></a>
+    <a href="#" id="add-contacto-btn" class="btn btn-primary "><%= fa_icon 'plus' %></a>
   </div>
   <div class="col-md-4">
-    <div class="form-group" id="add-new-group">
+    <div class="form-contacto" id="add-new-contacto">
       <div class="col-md-offset-3 col-md-8">
-        <div class="input-group">
-          <input type="text" name="new_group" id="new_group" class="form-control">
-          <span class="input-group-btn">
+        <div class="input-contacto">
+          <input type="text" name="new_contacto" id="new_group" class="form-control">
+          <span class="input-contacto-btn">
             <a href="#" class="btn btn-default">
               <i><%= fa_icon 'check' %></i>
             </a>
@@ -96,6 +96,7 @@
       </div>
     </div>
   </div>
+</div>
 </div>
 
 

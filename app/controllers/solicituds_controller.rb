@@ -22,10 +22,14 @@ class SolicitudsController < ApplicationController
   end
 
   def create
-    @solicitud = Solicitud.new(solicitud_params)
-
+    if current_user
+      @solicitud = current_user.solicituds.new(solicitud_params)
+    else
+      user_id = User.first.id 
+        @solicitud = Solicitud.new(solicitud_params)
+    end
     if @solicitud.save
-      redirect_to @solicitud, notice: 'Registro creado correctamente.'
+      redirect_to solicituds_path, notice: 'Registro creado correctamente.'
     else
       render :new
     end
@@ -33,7 +37,7 @@ class SolicitudsController < ApplicationController
 
   def update
     if @solicitud.update(solicitud_params)
-      redirect_to @solicitud, notice: 'Registro actualizado correctamente.'
+      redirect_to solicituds_path, notice: 'Registro actualizado correctamente.'
     else
       render :edit
     end
@@ -52,7 +56,7 @@ class SolicitudsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def solicitud_params
-      params.require(:solicitud).permit(:proyecto, :estatus, :comentarios, :user_id, :cliente_id, :cliente_contacto_id, 
+      params.require(:solicitud).permit(:id, :user_id, :proyecto_id, :estatus, :cliente_id, :cliente_contacto_id, :comentarios,  
         :estructura_columna_pr, :estructura_columna_hss_o_cajon, :estructura_columna_ptr_o_monten, :estructura_trabes_pr, 
         :estructura_trabes_ps, :estructura_trabes_angulo_con_ptr, :estructura_angulo_con_angulo, :estructura_ptr_con_ptr, 
         :estructura_union_filete, :estructura_union_a_tope, :estructura_espesor_columna, :estructura_espesor_trabe, 
@@ -66,7 +70,7 @@ class SolicitudsController < ApplicationController
         :tuberia_uniones_10_a_14, :tuberia_uniones_16_a_20, :tuberia_uniones_24_a_26, :tuberia_uniones_30_a_32, :tuberia_uniones_34_a_36, 
         :tuberia_uniones_38_a_42, :tuberia_uniones_44_a_48, :tuberia_cedula_hasta_2_y_medio, :tuberia_cedula_3_a_8, :tuberia_cedula_10_a_14, 
         :tuberia_cedula_16_a_20, :tuberia_cedula_24_a_26, :tuberia_cedula_30_a_32, :tuberia_cedula_34_a_36, :tuberia_cedula_38_a_42, 
-        :tuberia_cedula_44_a_48, :tuberia_codigo_evaluacion, :nombre_contacto, :telefono_directo, :correo, :puesto, :departamento)
+        :tuberia_cedula_44_a_48, :tuberia_codigo_evaluacion  )
     end
 end
 
