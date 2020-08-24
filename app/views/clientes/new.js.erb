@@ -1,0 +1,7 @@
+$('#form-modal-title').html("<i class='glyphicon glyphicon-plus'></i>&nbsp;&nbsp;Crear Cliente");
+$('#form-modal-body').html('<%= j render "form", cliente: @cliente  %>');
+$('#form-modal').modal('show');
+$('#form-modal-save-btn').click(function() {
+	$('#new_tipo_montaje').submit();
+});
+ 

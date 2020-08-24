@@ -99,7 +99,7 @@ body {
 .ui-autocomplete {
 	position: relative;
 	cursor: default;
-	z-index. 999 !important;
+	z-index: 999 !important;
 	background-color: #68131D;
 	color: white;
 	width: 196px;

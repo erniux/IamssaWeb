@@ -34,7 +34,7 @@ require("jquery-ui")
 	$('#add-new-proyecto').hide();
 	$('#add-proyecto-btn').click(function() {
 		$('#add-new-proyecto').slideToggle(function() {
-			$('#new_proyecto').focus();
+			$('#nombre_proyecto').focus();
 		});
 		return false;
 	});
@@ -42,14 +42,19 @@ require("jquery-ui")
 	$('#save-proyecto-btn').click(function(event) {
 		event.preventDefault();
 
-		var newProyecto = $('#new_proyecto');
+		var newProyecto = $('#nombre_proyecto');
 		var inputProyecto = newProyecto.closest('.input-proyecto');
 
 		$.ajax({
 			url: "/proyectos", 
 			method: "post",
 			data: {
-				 proyecto: { nombre_proyecto: $('#new_proyecto').val() } 
+				 proyecto: { nombre_proyecto: $('#nombre_proyecto').val(),
+				 			 empresa: $('#nombre_empresa').val(),
+				 			 responsable: $('#nombre_responsable').val(),
+				 			 comentarios: $('#comentarios').val()	
+
+				  } 
 			},
 			success: function (proyecto) {
 				if(proyecto.nombre_proyecto != null) {
@@ -62,8 +67,12 @@ require("jquery-ui")
 								.text(proyecto.nombre_proyecto);
 
 					$('#solicitud_proyecto_id').append(newOption);
-
+					$('#add-new-proyecto').hide();
 					newProyecto.val("");
+					$('#nombre_proyecto').val("");
+					$('#nombre_empresa').val("");
+					$('#nombre_responsable').val("");
+					$('#comentarios').val("")	
 				}
 			},
 			error: function (xhr) {
@@ -89,9 +98,76 @@ $(function() {
 	$('#add-new-cliente').hide();
 	$('#add-cliente-btn').click(function() {
 		$('#add-new-cliente').slideToggle(function() {
-			$('#new_cliente').focus();
+			$('#nombre_cliente').focus();
 		});
 		return false;
+	});
+
+	$('#save-cliente-btn').click(function(event) {
+		event.preventDefault();
+
+		var newcliente = $('#new_cliente');
+		var inputCliente = newcliente.closest('.input-cliente');
+
+		$.ajax({
+			url: "/clientes", 
+			method: "post",
+			data: {
+				 cliente: { nombre_fiscal: $('#nombre_fiscal').val(),
+				 			nombre_comercial: $('#nombre_comercial').val(),
+							rfc: $('#rfc').val(),
+							calle_numero: $('#calle_numero').val(),
+							colonia: $('#colonia').val(),
+							poblacion: $('#poblacion').val(),
+							estado: $('#estado').val(),
+							codigo_postal: $('#codigo_postal').val(),
+							telefono_oficina: $('#telefono_oficina').val(),
+							correo: $('#correo').val(),
+							medio_contacto: $('#medio_contacto').val()
+				  } 
+			},
+			success: function (proyecto) {
+				if(cliente.nombre_fiscal != null) {
+					inputCliente.removeClass('has-error');
+					inputCliente.next('.text-danger').remove();
+
+					var newOption = $('<option />')
+								.attr('value', cliente.id)
+								.attr('selected', true)
+								.text(cliente.nombre_fiscal);
+
+					$('#solicitud_cliente_id').append(newOption);
+					$('#add-new-cliente').hide();
+					newCliente.val("");
+					$('#nombre_fiscal').val("");
+					$('#nombre_comercial').val("");
+				    $('#rfc').val("");
+				    $('#calle_numero').val("");
+				    $('#colonia').val("");
+				    $('#poblacion').val("");
+				    $('#estado').val("");
+				    $('#codigo_postal').val("");
+				    $('#telefono_oficina').val("");
+				    $('#correo').val("");
+				    $('#medio_contacto').val("");
+ 
+				}
+			},
+			error: function (xhr) {
+				var errors = xhr.responseJSON;
+				var error = errors.join(" , ");
+				if (error) {
+					
+
+					inputCliente.next('.text-danger').detach();
+					 
+					 inputCliente
+						.addClass('has-error')
+						.after('<p class="text-danger">' + error + '</p>');
+				}
+			}
+
+		});
 	});
 });
 
@@ -123,4 +199,7 @@ $(function() {
       }
     });
   });
+
+ 
+ 
 

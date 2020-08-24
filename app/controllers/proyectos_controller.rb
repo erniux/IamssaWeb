@@ -12,6 +12,6 @@ class ProyectosController < ApplicationController
 	private 
 
 	def proyecto_params
-		params.require(:proyecto).permit(:id, :nombre_proyecto)
+		params.require(:proyecto).permit(:id, :nombre_proyecto, :empresa, :responsable, :comentarios)
 	end
 end

@@ -23,11 +23,14 @@
   <div class="col-md-1">
     <a href="#" id="add-proyecto-btn" class="btn btn-primary "><%= fa_icon 'plus' %></a>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-5">
     <div class="form-proyecto" id="add-new-proyecto">
       <div class="col-md-offset-3 col-md-8">
         <div class="input-proyecto">
-          <input type="text" name="new_proyecto" id="new_proyecto" class="form-control">
+          <input type="text" name="nombre_proyecto" id="nombre_proyecto" class="form-control" placeholder="Nombre del Proyecto">
+          <input type="text" name="nombre_empresa" id="nombre_empresa" class="form-control" placeholder="Empresa">
+          <input type="text" name="nombre_responsable" id="nombre_responsable" class="form-control" placeholder="Responsable">
+          <input type="text" name="comentarios" id="comentarios" class="form-control" placeholder="Comentarios">
           <span class="input-group-btn">
             <a id="save-proyecto-btn" class="btn btn-default">
               <i><%= fa_icon 'check' %></i>
@@ -50,19 +53,25 @@
       <%= form.collection_select(:cliente_id,  Cliente.order(:nombre_comercial), :id, :nombre_comercial, { prompt: "Seleccione un cliente"}, {class: 'form-control'}) %> 
   </div>
   <div class="col-md-1">
-    <a href="#" id="add-cliente-btn" class="btn btn-primary "><%= fa_icon 'plus' %></a>
+      <a href="#" id="add-cliente-btn" class="btn btn-primary "><%= fa_icon 'plus' %></a>
+    </button>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-5">
     <div class="form-cliente" id="add-new-cliente">
       <div class="col-md-offset-3 col-md-8">
         <div class="input-cliente">
-          <input type="text" name="new_cliente" id="new_cliente" class="form-control">
-          <span class="input-cliente-btn">
-            <a href="#" class="btn btn-default">
-              <i><%= fa_icon 'check' %></i>
-            </a>
-          </span>
-        </div>
+          <input type="text" name="nombre_fiscal" id="nombre_fiscal" class="form-control" placeholder="Nombre Fiscal">
+          <input type="text" name="nombre_comercial" id="nombre_comercial" class="form-control" placeholder="Nombre comercial">
+          <input type="text" name="rfc" id="rfc" class="form-control" placeholder="RFC">
+          <input type="text" name="calle_numero" id="calle_numero" class="form-control" placeholder="Calle y Número">
+          <input type="text" name="colonia" id="colonia" class="form-control" placeholder="Colonia">
+          <input type="text" name="poblacion" id="poblacion" class="form-control" placeholder="Población">
+          <input type="text" name="estado" id="estado" class="form-control" placeholder="Estado">
+          <input type="text" name="codigo_postal" id="codigo_postal" class="form-control" placeholder="Nombre Fiscal">
+          <input type="text" name="nombre_fiscal" id="nombre_fiscal" class="form-control" placeholder="Nombre Fiscal">
+          <input type="text" name="nombre_fiscal" id="nombre_fiscal" class="form-control" placeholder="Nombre Fiscal">
+          <input type="text" name="nombre_fiscal" id="nombre_fiscal" class="form-control" placeholder="Nombre Fiscal">
+
       </div>
     </div>
   </div>
