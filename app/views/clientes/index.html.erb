@@ -25,7 +25,7 @@
 <table class="table">
   <thead>
     <tr>
-      <th>Nombre Comercial</th>
+      <th>Nombre Fiscal</th>
       <th>RFC</th>
       <th>Tel Oficina</th>
       <th>Correo</th>
@@ -36,7 +36,7 @@
   <tbody>
     <% @clientes.each do |cliente| %>
     <tr>
-        <td><%= cliente.nombre_comercial %></td>
+        <td><%= cliente.nombre_fiscal %></td>
         <td><%= cliente.rfc %></td>
         <td><%= cliente.telefono_oficina %></td>
         <td><%= cliente.correo %></td>
