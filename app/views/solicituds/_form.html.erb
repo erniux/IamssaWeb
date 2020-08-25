@@ -1,5 +1,5 @@
 <%= form_with(model: solicitud, local: true) do |form| %>
-<%= form.submit  class: "btn alert-primary form-control" %><br><br>
+<%= form.submit "Crear Solicitud",  class: "btn alert-primary form-control" %><br><br>
 <%= link_to 'Cancelar', solicituds_path, class: "btn alert-danger form-control" %>
 
   <% if solicitud.errors.any? %> 

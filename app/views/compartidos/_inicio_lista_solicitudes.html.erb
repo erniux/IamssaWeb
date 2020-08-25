@@ -6,7 +6,7 @@
       <th>Proyecto</th>
       <th>Estatus</th>
       <th>Usuario</th>
-      <th>Contacto</th>
+       
       <th colspan="3">Acciones</th>
     </tr>
   </thead>
@@ -19,7 +19,7 @@
         <td><%= solicitud.proyecto.nombre_proyecto %></td>
         <td><%= solicitud.estatus %></td>
         <td><%= solicitud.user.name %></td>
-        <td><%= solicitud.nombre_contacto  %></td>
+         
         <td><%= link_to 'Mostrar', solicitud %></td>
         <td><%= link_to 'Modificar', edit_solicitud_path(solicitud) %></td>
       </tr>
