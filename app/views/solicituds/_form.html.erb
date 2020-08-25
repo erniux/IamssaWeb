@@ -1,10 +1,10 @@
 <%= form_with(model: solicitud, local: true) do |form| %>
-<%= form.submit "Crear Solicitud",  class: "btn alert-primary form-control" %><br><br>
+<%= form.submit "Guardar Solicitud",  class: "btn alert-primary form-control" %><br><br>
 <%= link_to 'Cancelar', solicituds_path, class: "btn alert-danger form-control" %>
 
   <% if solicitud.errors.any? %> 
     <% solicitud.errors.full_messages.each do |message| %>
-       <%= j add_gritter(message, :title => "Solicitud", :sticky => false,  :class_name => "custom_error") %>
+       <li><%= message %></li>
     <% end %>
   <% end %>
            
@@ -52,30 +52,12 @@
   <div class="col-md-7">
       <%= form.collection_select(:cliente_id,  Cliente.order(:nombre_comercial), :id, :nombre_comercial, { prompt: "Seleccione un cliente"}, {class: 'form-control'}) %> 
   </div>
-  <div class="col-md-1">
-      <a href="#" id="add-cliente-btn" class="btn btn-primary "><%= fa_icon 'plus' %></a>
-    </button>
+  <div class="col-md-1">    
+      <%= link_to new_cliente_path, class: "btn btn-primary" do  %>
+      <%= fa_icon 'plus' %>
+      <% end %>
   </div>
-  <div class="col-md-5">
-    <div class="form-cliente" id="add-new-cliente">
-      <div class="col-md-offset-3 col-md-8">
-        <div class="input-cliente">
-          <input type="text" name="nombre_fiscal" id="nombre_fiscal" class="form-control" placeholder="Nombre Fiscal">
-          <input type="text" name="nombre_comercial" id="nombre_comercial" class="form-control" placeholder="Nombre comercial">
-          <input type="text" name="rfc" id="rfc" class="form-control" placeholder="RFC">
-          <input type="text" name="calle_numero" id="calle_numero" class="form-control" placeholder="Calle y Número">
-          <input type="text" name="colonia" id="colonia" class="form-control" placeholder="Colonia">
-          <input type="text" name="poblacion" id="poblacion" class="form-control" placeholder="Población">
-          <input type="text" name="estado" id="estado" class="form-control" placeholder="Estado">
-          <input type="text" name="telefono_oficina" id="telefono_oficina" class="form-control" placeholder="Teléfono Oficina">
-          <input type="text" name="correo" id="correo" class="form-control" placeholder="Correo">
-          <input type="text" name="medio_contacto" id="medio_contacto" class="form-control" placeholder="Medio de contacto">
-           
-
-      </div>
-    </div>
-  </div>
-</div>
+   
 </div>
 
 <!-- Contacto -->
@@ -89,23 +71,8 @@
   <div class="col-md-7">
       <%= form.grouped_collection_select(:cliente_contacto_id,  Cliente.order(:nombre_fiscal), :cliente_contactos, :nombre_fiscal,   :id, :nombre, {prompt: "seleccione un contacto"}, {class: 'form-control'}) %> 
   </div>
-  <div class="col-md-1">
-    <a href="#" id="add-contacto-btn" class="btn btn-primary "><%= fa_icon 'plus' %></a>
-  </div>
-  <div class="col-md-4">
-    <div class="form-contacto" id="add-new-contacto">
-      <div class="col-md-offset-3 col-md-8">
-        <div class="input-contacto">
-          <input type="text" name="new_contacto" id="new_group" class="form-control">
-          <span class="input-contacto-btn">
-            <a href="#" class="btn btn-default">
-              <i><%= fa_icon 'check' %></i>
-            </a>
-          </span>
-        </div>
-      </div>
-    </div>
-  </div>
+   
+ 
 </div>
 </div>
 

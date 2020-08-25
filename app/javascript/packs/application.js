@@ -30,7 +30,7 @@ require("jquery-ui")
  		});
  });
 
- $(function() {
+ document.addEventListener("turbolinks:load", function() {
 	$('#add-new-proyecto').hide();
 	$('#add-proyecto-btn').click(function() {
 		$('#add-new-proyecto').slideToggle(function() {
@@ -94,95 +94,7 @@ require("jquery-ui")
 	});
 });
 
-$(function() {
-	$('#add-new-cliente').hide();
-	$('#add-cliente-btn').click(function() {
-		$('#add-new-cliente').slideToggle(function() {
-			$('#nombre_cliente').focus();
-		});
-		return false;
-	});
-
-	$('#save-cliente-btn').click(function(event) {
-		event.preventDefault();
-
-		var newcliente = $('#new_cliente');
-		var inputCliente = newcliente.closest('.input-cliente');
-
-		$.ajax({
-			url: "/clientes", 
-			method: "post",
-			data: {
-				 cliente: { nombre_fiscal: $('#nombre_fiscal').val(),
-				 			nombre_comercial: $('#nombre_comercial').val(),
-							rfc: $('#rfc').val(),
-							calle_numero: $('#calle_numero').val(),
-							colonia: $('#colonia').val(),
-							poblacion: $('#poblacion').val(),
-							estado: $('#estado').val(),
-							codigo_postal: $('#codigo_postal').val(),
-							telefono_oficina: $('#telefono_oficina').val(),
-							correo: $('#correo').val(),
-							medio_contacto: $('#medio_contacto').val()
-				  } 
-			},
-			success: function (proyecto) {
-				if(cliente.nombre_fiscal != null) {
-					inputCliente.removeClass('has-error');
-					inputCliente.next('.text-danger').remove();
-
-					var newOption = $('<option />')
-								.attr('value', cliente.id)
-								.attr('selected', true)
-								.text(cliente.nombre_fiscal);
-
-					$('#solicitud_cliente_id').append(newOption);
-					$('#add-new-cliente').hide();
-					newCliente.val("");
-					$('#nombre_fiscal').val("");
-					$('#nombre_comercial').val("");
-				    $('#rfc').val("");
-				    $('#calle_numero').val("");
-				    $('#colonia').val("");
-				    $('#poblacion').val("");
-				    $('#estado').val("");
-				    $('#codigo_postal').val("");
-				    $('#telefono_oficina').val("");
-				    $('#correo').val("");
-				    $('#medio_contacto').val("");
- 
-				}
-			},
-			error: function (xhr) {
-				var errors = xhr.responseJSON;
-				var error = errors.join(" , ");
-				if (error) {
-					
-
-					inputCliente.next('.text-danger').detach();
-					 
-					 inputCliente
-						.addClass('has-error')
-						.after('<p class="text-danger">' + error + '</p>');
-				}
-			}
-
-		});
-	});
-});
-
-$(function() {
-	$('#add-new-contacto').hide();
-	$('#add-contacto-btn').click(function() {
-		$('#add-new-contacto').slideToggle(function() {
-			$('#new_contacto').focus();
-		});
-		return false;
-	});
-});
-
-
-$(function() {
+document.addEventListener("turbolinks:load", function() {
     var contactos;
     $('#contacto').hide();
     

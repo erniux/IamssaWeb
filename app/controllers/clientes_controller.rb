@@ -33,7 +33,7 @@ class ClientesController < ApplicationController
     @cliente = Cliente.new(cliente_params)
 
     if @cliente.save
-      redirect_to @cliente, notice: 'Registro guardado con éxito.'
+      redirect_to edit_cliente_path(@cliente), notice: 'Registro guardado con éxito.'
     else
       render :new
     end
