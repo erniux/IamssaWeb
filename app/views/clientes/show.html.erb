@@ -3,6 +3,7 @@
      <h3><%= @cliente.nombre_fiscal %></h3>
      <%= link_to 'Editar', edit_cliente_path(@cliente), class: "btn alert-success" %>
     <%= link_to 'Regresar', clientes_path, class: "btn alert-danger" %>
+    <%= link_to 'Crear Solicitud', new_solicitud_path,  class: "btn  alert-primary" %>
    </div>
  </div>
  <br>
