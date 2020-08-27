@@ -1,5 +1,9 @@
 class ProyectosController < ApplicationController
 
+	def index
+		@proyectos = Proyecto.all
+	end 
+
 	def create
 		@proyecto = Proyecto.new(proyecto_params)
 		if @proyecto.save

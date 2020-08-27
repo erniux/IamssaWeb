@@ -20,6 +20,7 @@ body {
  	background: #FDFAFA !important; 
  	color: #68131D;
  	font-size: 14px;
+ 	margin: 0px 10px 10px;
  }
 
  .table {
@@ -38,6 +39,10 @@ body {
 	
 }
 
+.btn:hover {
+  color: #fff;
+  background-color: #000; } 
+
 .navbar-nav .nav-link {
 	color: white;
 }
@@ -45,6 +50,8 @@ body {
 .a {
 	color: #68131D;
 }
+
+
 
 .navbar .navbar-brand {
 	font-weight: bold;

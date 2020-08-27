@@ -57,7 +57,8 @@ class ClienteContactosController < ApplicationController
     end
 
     def cliente_contacto_params
-      params.require(:cliente_contacto).permit(:id, :nombre, :appaterno, :apmaterno, :telefono_directo, :correo, :puesto, :departamento, :cliente_id)
+      params.require(:cliente_contacto).permit(:id, :nombre, :appaterno, :apmaterno, :telefono_directo, :correo, 
+                                                :puesto, :departamento, :cliente_id)
     end
 
 end

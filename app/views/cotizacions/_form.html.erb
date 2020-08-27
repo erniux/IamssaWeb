@@ -1,0 +1,43 @@
+<%= form_with(model: cotizacion, local: true) do |form| %>
+  <% if cotizacion.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+        <% cotizacion.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.submit  'Guardar Cotización', class: "btn alert-primary form-control" %><br><br>
+  <%= link_to 'Cancelar', @cotizacion, class: "btn alert-danger form-control" %>
+<br>
+<br>
+  <div class="row">
+    <div class="col-md-2">
+      <%= form.label :num_cotizacion %>
+    </div>
+    <div class="col-md-4">
+      <%= form.text_field :num_cotizacion %>
+    </div>
+
+    <div class="col-md-2">
+      <%= form.label :solicitud_id %>
+    </div>
+    <div class="col-md-4">
+      <%= form.text_field :solicitud_id %>
+    </div>
+  </div>
+
+  <br>  
+  <%= form.fields_for :cotizacion_detalles do |detalle| %>
+    <%= render 'cotizacion_detalle_fields', f: detalle %> 
+  <% end %>
+  
+<div>  <br>  
+    <%= link_to_add_association 'Agregar Servicio', form, :cotizacion_detalles, class: "btn alert-success" %>
+</div>
+
+   
+<% end %>
+   

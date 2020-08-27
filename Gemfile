@@ -20,6 +20,7 @@ gem 'gritter', '~> 1.2'
 gem 'prawn', '~> 2.3'
 gem 'kaminari', '~> 1.2', '>= 1.2.1'
 gem 'pg_search', '~> 2.3', '>= 2.3.2'
+gem 'cocoon', '~> 1.2', '>= 1.2.14'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

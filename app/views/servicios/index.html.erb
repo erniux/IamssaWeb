@@ -1,0 +1,78 @@
+<p id="notice"><%= notice %></p>
+<h3>catálogo de Servicios</h3>
+
+
+<%= form_tag servicios_path, method: :get do %>
+    <div class="input-group">
+        <%= text_field_tag 'term', params[:term], placeholder: "Ingrese criterio de búsqueda", class: "form-control" %>
+        <span class="input-group-btn">
+            <button class="btn btn-default" type="submit">
+                <i><%= fa_icon 'search'  %></i>
+            </button>
+        </span>
+    </div>
+
+<% end %>
+<br>
+
+    <div class="row">
+      <div class="col-md-4">
+        <%= link_to 'Nuevo Servicio', new_servicio_path, class: 'btn btn-info' %>
+      </div>
+      <div class="col-md-8">
+        <% if !@servicios.nil? %>
+          <%= paginate @servicios  %></p>
+        <% end %>
+      </div>
+    </div>
+
+ <br>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>concepto</th>
+      <th>cantidad</th>
+      <th>precio_a</th>
+      <th>precio_b</th>
+      <th>precio_c</th>
+      <th>entidad</th>
+      <th>tipo_servicio</th>
+      <th>material</th>
+      <th colspan="3">Acciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @servicios.each do |servicio| %>
+      <tr>
+        <td><%= servicio.concepto %></td>
+        <td><%= servicio.cantidad %></td>
+        <td><%= servicio.precio_a %></td>
+        <td><%= servicio.precio_b %></td>
+        <td><%= servicio.precio_c %></td>
+        <td><%= servicio.entidad %></td>
+        <td><%= servicio.tipo_servicio %></td>
+        <td><%= servicio.material %></td>
+         
+        <td><%= link_to edit_servicio_path(servicio), class: "btn alert-info", local: true  do %>
+          <%= fa_icon 'pencil' %>
+        <% end %></td>
+        <td><%= link_to  servicio, class: "btn alert-primary", local: true  do %>
+          <%= fa_icon 'file' %>
+        <% end %></td>
+        <td><%= link_to servicios, method: :delete, data:{ confirm: '¿Confirma eliminar el registro?'}, class: "btn alert-danger"  do %>
+          <%= fa_icon 'trash'  %>
+        <%end %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
+
+
+

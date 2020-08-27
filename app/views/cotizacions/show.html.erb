@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Num cotizacion:</strong>
+  <%= @cotizacion.num_cotizacion %>
+</p>
+
+<p>
+  <strong>Solicitud:</strong>
+  <%= @cotizacion.solicitud_id %>
+</p>
+
+<%= link_to 'Edit', edit_cotizacion_path(@cotizacion) %> |
+<%= link_to 'Back', cotizacions_path %>

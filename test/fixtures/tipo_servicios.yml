@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  clave: MyString
+  descripcion: MyString
+  tbl: MyString
+  frm: MyString
+  frmservicio: MyString
+  reportes: MyString
+  aprox: 1
+  cant_condiciones: 1
+  capacidad_instalada: 1
+
+two:
+  clave: MyString
+  descripcion: MyString
+  tbl: MyString
+  frm: MyString
+  frmservicio: MyString
+  reportes: MyString
+  aprox: 1
+  cant_condiciones: 1
+  capacidad_instalada: 1

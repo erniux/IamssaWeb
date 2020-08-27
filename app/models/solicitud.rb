@@ -4,6 +4,8 @@ class Solicitud < ApplicationRecord
   	belongs_to :user 
   	belongs_to :cliente
   	belongs_to :proyecto
+
+  	has_many :cotizacions
   	
   	validates_presence_of :cliente, :estatus, :proyecto_id
 

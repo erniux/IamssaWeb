@@ -1,14 +1,13 @@
 Rails.application.routes.draw do
 
+  resources :tipo_servicios
   resources :cotizacions
   resources :proyectos
   resources :servicios
-  resources :tipo_servicios
   resources :empleados
   resources :solicituds
-  
-  
-
+   
+    
   resources :clientes do
     resources :cliente_contactos
     get 'autocomplete', on: :collection

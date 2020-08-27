@@ -1,0 +1,23 @@
+<div class="nested-fields">
+	<br>
+  <%= f.collection_select(:servicio_id,  Servicio.order(:concepto), :id, :concepto, { prompt: "Seleccione un servicio"} , {class: 'form-control'}) %>  <br>
+  <div class="row">
+  	<div class="col-md-2">
+  		<%= f.text_field :num_partida, placeholder: 'Num. Partida', required: 'required', class: "form-control" %>
+  	</div>
+  	<div class="col-md-2">
+  	<%= f.text_field :cantidad, label: 'Cantidad',  placeholder: 'cantidad', required: 'required', class: "form-control"  %>
+  </div>
+  <div class="col-md-2">
+  	<%= f.text_field :precio, label: 'Precio', placeholder: 'Precio', required: 'required', class: "form-control"  %>
+  </div>
+  <div class="col-md-2">
+  	<%= f.text_field :observaciones, label: 'Observaciones', placeholder: 'Observaciones', class: 	"form-control"  %>
+   </div>  
+   <div class="col-md-2">
+  	<%= link_to_remove_association "Eliminar", f, class: "btn btn-danger"  %>
+  	 
+  </div>
+</div>
+
+</div> 

@@ -1,0 +1,60 @@
+<%= form_with(model: tipo_servicio, local: true) do |form| %>
+  <% if tipo_servicio.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+        <% tipo_servicio.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.submit  'Guardar Tipo Servicio', class: "btn alert-primary form-control" %><br><br>
+  <%= link_to 'Cancelar', tipo_servicios_path, class: "btn alert-danger form-control" %>
+<br>
+<br>
+  <div class="row">
+    <div class="col-md-3">
+      Clave:&nbsp;<%= form.text_field :clave, class: "form-control", required: 'required' %>
+    </div>
+    <div class="col-md-3">
+      Descripción&nbsp;<%= form.text_field :descripcion, class: "form-control", required: 'required' %>
+    </div>
+
+    <div class="col-md-3">
+      TBL:&nbsp;<%= form.text_field :tbl, class: "form-control" %>
+    </div>
+    <div class="col-md-3">
+      FRM:&nbsp;<%= form.text_field :frm, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+      FRM Servicio:&nbsp;<%= form.text_field :frmservicio, class: "form-control" %>
+    </div>
+    <div class="col-md-3">
+      Reportes;&nbsp;<%= form.text_field :reportes, class: "form-control" %>
+    </div>
+
+    <div class="col-md-3">
+      Stock:&nbsp;<%= form.text_field :cant_condiciones, class: "form-control" %>
+    </div>
+    <div class="col-md-3">
+      Capacidad Instalada:&nbsp;<%= form.text_field :capacidad_instalada, class: "form-control" %>
+    </div>
+  </div>
+
+
+  <br>  
+  <%= form.fields_for :servicios do |servicio| %>
+    <%= render 'servicio_fields', f: servicio %> 
+  <% end %>
+  
+<div>  <br>  
+    <%= link_to_add_association 'Agregar Tipo Servicio', form, :servicios, class: "btn alert-success" %>
+</div>
+
+   
+<% end %>
+   

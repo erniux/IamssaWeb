@@ -1,0 +1,30 @@
+<div class="nested-fields">
+	<hr>
+  <div class="row">
+    <div class="col-md-12">
+      <%= f.text_field :concepto, placeholder: 'Concepto', required: 'required', class: "form-control" %>
+    </div>
+  </div><br>
+  <div class="row">
+  	<div class="col-md-2">
+  		<%= f.text_field :cantidad, placeholder: 'Cantidad', required: 'required', class: "form-control" %>
+  	</div>
+  	<div class="col-md-2">
+  	<%= f.text_field :precio_a,  placeholder: 'Precio A', required: 'required', class: "form-control"  %>
+  </div>
+  <div class="col-md-2">
+  	<%= f.text_field :precio_b, placeholder: 'Precio B', required: 'required', class: "form-control"  %>
+  </div>
+  <div class="col-md-2">
+    <%= f.text_field :precio_c, placeholder: 'Precio C', required: 'required', class: "form-control"  %>
+  </div>
+  <div class="col-md-2">
+  	<%= f.text_field :material,  placeholder: 'Material', required: 'required', class: 	"form-control"  %>
+   </div>  
+   <div class="col-md-2">
+  	<%= link_to_remove_association "Eliminar", f, class: "btn btn-danger"  %>
+   </div>
+  </div >
+</div> 
+
+ 

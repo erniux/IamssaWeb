@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_25_025235) do
+ActiveRecord::Schema.define(version: 2020_08_26_200434) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,27 @@ ActiveRecord::Schema.define(version: 2020_08_25_025235) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "cotizacion_detalles", force: :cascade do |t|
+    t.integer "num_partida"
+    t.float "cantidad"
+    t.float "precio"
+    t.text "observaciones"
+    t.bigint "cotizacion_id", null: false
+    t.bigint "servicio_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["cotizacion_id"], name: "index_cotizacion_detalles_on_cotizacion_id"
+    t.index ["servicio_id"], name: "index_cotizacion_detalles_on_servicio_id"
+  end
+
+  create_table "cotizacions", force: :cascade do |t|
+    t.string "num_cotizacion"
+    t.bigint "solicitud_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["solicitud_id"], name: "index_cotizacions_on_solicitud_id"
+  end
+
   create_table "proyectos", id: :serial, force: :cascade do |t|
     t.string "nombre_proyecto"
     t.string "empresa"
@@ -83,11 +104,11 @@ ActiveRecord::Schema.define(version: 2020_08_25_025235) do
     t.float "precio_a"
     t.float "precio_b"
     t.float "precio_c"
-    t.string "entidad"
-    t.string "tipo_servicio"
     t.string "material"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "tipo_servicio_id"
+    t.index ["tipo_servicio_id"], name: "index_servicios_on_tipo_servicio_id"
   end
 
   create_table "solicituds", id: :serial, force: :cascade do |t|
@@ -168,10 +189,17 @@ ActiveRecord::Schema.define(version: 2020_08_25_025235) do
   end
 
   create_table "tipo_servicios", id: :serial, force: :cascade do |t|
-    t.string "cve_tipo_servicio"
-    t.string "detalle_servicio"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "clave"
+    t.string "descripcion"
+    t.string "tbl"
+    t.string "frm"
+    t.string "frmservicio"
+    t.string "reportes"
+    t.integer "aprox"
+    t.integer "cant_condiciones"
+    t.integer "capacidad_instalada"
   end
 
   create_table "users", id: :serial, force: :cascade do |t|
@@ -189,6 +217,10 @@ ActiveRecord::Schema.define(version: 2020_08_25_025235) do
   end
 
   add_foreign_key "cliente_contactos", "clientes"
+  add_foreign_key "cotizacion_detalles", "cotizacions"
+  add_foreign_key "cotizacion_detalles", "servicios"
+  add_foreign_key "cotizacions", "solicituds"
+  add_foreign_key "servicios", "tipo_servicios"
   add_foreign_key "solicituds", "cliente_contactos"
   add_foreign_key "solicituds", "clientes"
   add_foreign_key "solicituds", "proyectos"

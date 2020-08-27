@@ -1,0 +1,71 @@
+<%= @proyectos.inspect %>
+<p id="notice"><%= notice %></p>
+<h3>Proyectos</h3>
+
+<%= form_tag proyectos_path, method: :get do %>
+    <div class="input-group">
+        <%= text_field_tag 'term', params[:term], placeholder: "Ingrese criterio de búsqueda", class: "form-control" %>
+        <span class="input-group-btn">
+            <button class="btn btn-default" type="submit">
+                <i><%= fa_icon 'search'  %></i>
+            </button>
+        </span>
+    </div>
+
+<% end %>
+<br>
+
+<div class="row">
+  <div class="col-md-4">
+    <%= link_to 'Nuevo Proyecto', new_proyecto_path, class: 'btn btn-info' %>
+  </div>
+  <div class="col-md-8">
+    <% if !@tipo_servicios.nil? %>
+      <%= paginate @tipo_servicios  %></p>
+    <% end %>
+  </div>
+</div>
+
+ <br>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Clave</th>
+      <th>Descripción</th>
+      <th>TBL</th>
+      <th>FRM</th>
+       <th>Servicio FRM</th>
+      <th colspan="3">Acciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tipo_servicios.each do |tipo| %>
+      <tr>
+
+        <td><%= tipo.clave %></td>
+        <td><%= tipo.descripcion %></td>
+        <td><%= tipo.tbl %></td>
+        <td><%= tipo.frm %></td>
+        <td><%= tipo.frmservicio %></td> 
+        <td><%= link_to edit_tipo_servicio_path(tipo), class: "btn alert-info", local: true  do %>
+          <%= fa_icon 'pencil' %>
+        <% end %></td>
+        <td><%= link_to  tipo, class: "btn alert-primary", local: true  do %>
+          <%= fa_icon 'file' %>
+        <% end %></td>
+        <td><%= link_to tipo, method: :delete, data:{ confirm: '¿Confirma eliminar el registro?'}, class: "btn alert-danger"  do %>
+          <%= fa_icon 'trash'  %>
+        <%end %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
+
+
+

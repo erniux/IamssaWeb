@@ -1,0 +1,44 @@
+<%= form_with(model: servicio, local: true) do |form| %>
+  <% if servicio.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+        <% servicio.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.submit  'Guardar Servicio', class: "btn alert-primary form-control" %><br><br>
+  <%= link_to 'Cancelar', @servicio, class: "btn alert-danger form-control" %>
+<br>
+<br>
+  <div class="row">
+    <div class="col-md-4">
+      Concepto:&nbsp;<%= form.text_field :concepto, class: "form-control" %>
+    </div>
+    <div class="col-md-4">
+      Cantidad:&nbsp;<%= form.text_field :cantidad, class: "form-control" %>
+    </div>
+    <div class="col-md-4">
+      Tipo Servicio:&nbsp;<%= form.text_field :tipo_servicio, class: "form-control" %>
+    </div>
+  </div>
+
+<div class="  "
+
+  <br>  
+   
+
+   
+<% end %>
+
+concepto
+cantidad
+precio_a
+precio_b
+precio_c
+entidad
+tipo_servicio
+material
+   

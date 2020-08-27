@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
-<h3>Solicitudes</h3>
+<h3>Cotizaciones</h3>
 
 
-<%= form_tag solicituds_path, method: :get do %>
+<%= form_tag cotizacions_path, method: :get do %>
     <div class="input-group">
         <%= text_field_tag 'term', params[:term], placeholder: "Ingrese criterio de búsqueda", class: "form-control" %>
         <span class="input-group-btn">
@@ -17,11 +17,11 @@
 
     <div class="row">
       <div class="col-md-4">
-        <%= link_to 'Nueva Solicitud', new_solicitud_path, class: 'btn btn-info' %>
+        <%= link_to 'Nueva Cotización', new_cotizacion_path, class: 'btn btn-info' %>
       </div>
       <div class="col-md-8">
-        <% if !@solicituds.nil? %>
-          <%= paginate @solicituds  %></p>
+        <% if !@cotizacions.nil? %>
+          <%= paginate @cotizacions  %></p>
         <% end %>
       </div>
     </div>
@@ -32,32 +32,30 @@
 <table class="table">
   <thead>
     <tr>
+      <th>Num. Cotizacion</th>
       <th>Num. Solicitud</th>
       <th>Cliente</th>
-      <th>Proyecto</th>
-      <th>Estatus</th>
-      <th>Usuario</th>
       <th>Contacto</th>
+       <th>Total</th>
       <th colspan="3">Acciones</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @solicituds.each do |solicitud| %>
+    <% @cotizacions.each do |cotizacion| %>
       <tr>
-        <td><%= solicitud.id %></td>
-        <td><%= solicitud.cliente.nombre_comercial %></td>
-        <td><%= solicitud.proyecto.nombre_proyecto %></td>
-        <td><%= solicitud.estatus %></td>
-        <td><%= solicitud.user.name %></td>
-        <td><%= solicitud.cliente_contacto_id     %></td>
-        <td><%= link_to edit_solicitud_path(solicitud), class: "btn alert-info", local: true  do %>
+        <td><%= cotizacion.id %></td>
+        <td><%= cotizacion.solicitud_id %></td>
+        <td><%= cotizacion.cliente(cotizacion.solicitud.cliente_id) %></td>
+        <td><%= cotizacion.contacto(cotizacion.solicitud.cliente_contacto_id) %></td>
+        <td>1,000.00 </td>
+        <td><%= link_to edit_cotizacion_path(cotizacion), class: "btn alert-info", local: true  do %>
           <%= fa_icon 'pencil' %>
         <% end %></td>
-        <td><%= link_to  solicitud, class: "btn alert-primary", local: true  do %>
+        <td><%= link_to  cotizacion, class: "btn alert-primary", local: true  do %>
           <%= fa_icon 'file' %>
         <% end %></td>
-        <td><%= link_to solicitud, method: :delete, data:{ confirm: '¿Confirma eliminar el registro?'}, class: "btn alert-danger"  do %>
+        <td><%= link_to cotizacion, method: :delete, data:{ confirm: '¿Confirma eliminar el registro?'}, class: "btn alert-danger"  do %>
           <%= fa_icon 'trash'  %>
         <%end %></td>
       </tr>

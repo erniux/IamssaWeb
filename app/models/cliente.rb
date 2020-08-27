@@ -1,7 +1,9 @@
 class Cliente < ApplicationRecord
 	include PgSearch::Model
 	
-	has_many :cliente_contactos
+	has_many :cliente_contactos, inverse_of: :cliente, dependent: :destroy
+	accepts_nested_attributes_for :cliente_contactos, reject_if: :all_blank, allow_destroy: true
+
 
 	validates_presence_of :nombre_fiscal, :nombre_comercial, :rfc, :codigo_postal, :telefono_oficina, :correo
 
@@ -12,3 +14,4 @@ class Cliente < ApplicationRecord
 											using:   {tsearch: { prefix: true }}			  
    
 end
+

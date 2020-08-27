@@ -48,8 +48,12 @@ class ClientesController < ApplicationController
   end
 
   def destroy
-    @cliente.destroy
-    redirect_to clientes_url, notice: 'Registro eliminado con éxito.'
+    if @cliente.cliente_contactos.any?
+      redirect_to clientes_url, notice: 'No es posible eliminar el registro, ya que tiene solicitudes y/o contactos asociados.'
+    else
+      @cliente.destroy
+      redirect_to clientes_url, notice: 'Registro eliminado con éxito.'
+    end
   end
 
   private
@@ -64,6 +68,8 @@ class ClientesController < ApplicationController
                                       :credito, :revision_lunes, :revision_martes, :revision_miercoles, :revision_jueves, 
                                       :revision_viernes, :revision_sabado, :cobro_lunes, :cobro_martes, :cobro_miercoles, 
                                       :cobro_jueves, :cobro_viernes, :cobro_sabado, :tipo, :descuento, 
-                                      :banco, :sucursal, :cuenta, :clabe)
+                                      :banco, :sucursal, :cuenta, :clabe,
+          cliente_contactos_attributes: [:id, :nombre, :appaterno, :apmaterno, :telefono_directo, :correo, :puesto,
+                                         :departamento, :_destroy])
     end
 end
