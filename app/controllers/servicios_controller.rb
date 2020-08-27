@@ -4,9 +4,9 @@ class ServiciosController < ApplicationController
 
   def index 
     @servicios = Servicio.all
-    end 
+  end 
      
-  end
+  
 
   def show
   end
@@ -47,8 +47,7 @@ class ServiciosController < ApplicationController
     end
 
     def servicio_params
-      params.require(:servicio).permit(:concepto, :cantidad, :precio_a, :precio_b, :precio_c, :material, 
-                                             :tipo_servicio_id)
+      params.require(:servicio).permit(:concepto, :cantidad, :precio_a, :precio_b, :precio_c, :material, :tipo_servicio_id)
     end
 end
  
