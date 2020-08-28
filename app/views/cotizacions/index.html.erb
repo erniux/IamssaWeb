@@ -48,7 +48,7 @@
         <td><%= cotizacion.solicitud_id %></td>
         <td><%= cotizacion.cliente(cotizacion.solicitud.cliente_id) %></td>
         <td><%= cotizacion.contacto(cotizacion.solicitud.cliente_contacto_id) %></td>
-        <td>1,000.00 </td>
+        <td><%= cotizacion.total %></td>
         <td><%= link_to edit_cotizacion_path(cotizacion), class: "btn alert-info", local: true  do %>
           <%= fa_icon 'pencil' %>
         <% end %></td>

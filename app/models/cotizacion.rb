@@ -1,5 +1,7 @@
 class Cotizacion < ApplicationRecord
 	include PgSearch::Model
+
+  before_save :calcula_total
   	
   	belongs_to :solicitud
 
@@ -18,4 +20,15 @@ class Cotizacion < ApplicationRecord
    	busqueda = ClienteContacto.where(id: id).first
    	contacto = busqueda.nombre + ' ' + busqueda.appaterno.to_s + ' ' + busqueda.apmaterno.to_s
    end
+
+   def calcula_total
+    total = 0
+    self.cotizacion_detalles.each do |precio|
+      total =+ (precio.precio * precio.cantidad)
+    end
+    self.total = total
+    puts "**************" + self.total.to_s
+   end
+
+
 end

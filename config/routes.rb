@@ -10,7 +10,6 @@ Rails.application.routes.draw do
     
   resources :clientes do
     resources :cliente_contactos
-    get 'autocomplete', on: :collection
   end
   
   resources :events

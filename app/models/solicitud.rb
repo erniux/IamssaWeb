@@ -13,4 +13,9 @@ class Solicitud < ApplicationRecord
   																	 proyecto: [ :nombre_proyecto ] },
 											   using:   {tsearch: { prefix: true }}	
 
+    def lista_cliente
+      cliente = Cliente.where(id: self.cliente_id).first
+      nombre = 'Solicitud: ' + ' ' + self.id.to_s + '; Cliente: ' + cliente.nombre_fiscal
+    end                         
+
 end

@@ -4,7 +4,8 @@ class TipoServiciosController < ApplicationController
 
   def index
     if params[:term].present?
-      @ttipo_servicios = TipoServicio.search_by_full_tipo_servicio(params[:term]).page(params[:page])
+      @tipo_servicios = TipoServicio.search_by_full_tipo_servicio(params[:term]).page(params[:page])
+
     elsif  
       @tipo_servicios = TipoServicio.order(:id).page(params[:page])
     end 

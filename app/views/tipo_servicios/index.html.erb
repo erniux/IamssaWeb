@@ -32,9 +32,7 @@
     <tr>
       <th>Clave</th>
       <th>Descripción</th>
-      <th>TBL</th>
-      <th>FRM</th>
-       <th>Servicio FRM</th>
+      <th>Total de Servicios</th>
       <th colspan="3">Acciones</th>
     </tr>
   </thead>
@@ -42,12 +40,9 @@
   <tbody>
     <% @tipo_servicios.each do |tipo| %>
       <tr>
-
         <td><%= tipo.clave %></td>
         <td><%= tipo.descripcion %></td>
-        <td><%= tipo.tbl %></td>
-        <td><%= tipo.frm %></td>
-        <td><%= tipo.frmservicio %></td> 
+        <td><%= tipo.servicios.count %></td> 
         <td><%= link_to edit_tipo_servicio_path(tipo), class: "btn alert-info", local: true  do %>
           <%= fa_icon 'pencil' %>
         <% end %></td>

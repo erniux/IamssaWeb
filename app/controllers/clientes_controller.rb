@@ -3,19 +3,11 @@ class ClientesController < ApplicationController
   access user: :all, site_admin: :all
 
   def index
-    
     if params[:term].present?
       @clientes = Cliente.search_by_full_cliente(params[:term]).order(nombre_fiscal: 'ASC').page(params[:page])
     elsif  
       @clientes = Cliente.order(:nombre_fiscal).order(nombre_fiscal: 'ASC').page(params[:page])
     end 
-     
-  end
-
-  def autocomplete
-    @clientes = Cliente.search_by_full_cliente(params[:term]).order(nombre_fiscal: 'ASC')
-    render json: @clientes.map { |cliente| { id: cliente.id, value: cliente.nombre_fiscal }}
-
   end
 
 
